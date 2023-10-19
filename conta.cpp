@@ -8,6 +8,15 @@ class Transacao{
         string data;
         double valor;
         string descricao;
+    public:
+        Transacao();
+        ~Transacao();
+        string getData();
+        void setData(string _data);
+        int getValor();
+        void setValor(double _valor);
+        int getDescricao();
+        void setDescricao(string _descricao);
 };
 class Conta
 {
@@ -18,8 +27,12 @@ private:
    vector <Transacao> transacoes;
 
 public:
-    Conta(/* args */);
+    Conta();
     ~Conta();
+    string getNome();
+    void setNome(string _nome);
+    int getNumeroConta();
+    void setNumeroConta(int _numero);
     virtual void extrato() const = 0;
     virtual void deposito();
     virtual void retirada();
@@ -51,7 +64,7 @@ public:
     void extrato() const override;
 };
 
-Poupanca::Poupanca(/* args */)
+Poupanca::Poupanca()
 {
 }
 
@@ -59,7 +72,7 @@ Poupanca::~Poupanca()
 {
 }
 
-Limite::Limite(/* args */)
+Limite::Limite()
 {
 }
 
@@ -67,7 +80,7 @@ Limite::~Limite()
 {
 }
 
-Comum::Comum(/* args */)
+Comum::Comum()
 {
 }
 
@@ -75,11 +88,64 @@ Comum::~Comum()
 {
 }
 
-Conta::Conta(/* args */)
+Conta::Conta()
 {
+    nome = "";
+    numero_conta = 0;
 }
+void Conta :: deposito(){
 
+}
+void Conta :: retirada(){
+
+}
 Conta::~Conta()
 {
 }
 
+    string Conta:: getNome()
+    {
+        return nome;
+    }
+    void Conta :: setNome(string _nome)
+    {
+        nome = _nome;
+    }
+    int Conta :: getNumeroConta()
+    {
+        return numero_conta;
+    }
+    void  Conta:: setNumeroConta(int _numero)
+    {
+        numero_conta = _numero;
+    }
+
+        string Transacao :: getData()
+        {
+            return data;
+        }
+        void Transacao :: setData(string _data)
+        {
+            data = _data;
+        }
+        int Transacao :: getValor()
+        {
+            return valor;
+
+        }
+        void Transacao :: setValor(double _valor)
+        {
+            valor = _valor;
+        }
+        int Transacao :: getDescricao()
+        {
+            return descricao;
+        }
+        void Transacao :: setDescricao(string _descricao)
+        {
+
+        }
+int main(){
+
+    return 0;
+}
