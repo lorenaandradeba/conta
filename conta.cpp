@@ -15,7 +15,7 @@ class Transacao{
         void setData(string _data);
         int getValor();
         void setValor(double _valor);
-        int getDescricao();
+        string getDescricao();
         void setDescricao(string _descricao);
 };
 class Conta
@@ -34,8 +34,8 @@ public:
     int getNumeroConta();
     void setNumeroConta(int _numero);
     virtual void extrato() const = 0;
-    virtual void deposito();
-    virtual void retirada();
+    virtual void deposito(double valor, string data);
+    virtual void retirada(double valor, string data);
 };
 class Comum : Conta
 {
@@ -93,10 +93,28 @@ Conta::Conta()
     nome = "";
     numero_conta = 0;
 }
-void Conta :: deposito(){
+void Conta :: deposito(double valor, string data){
+    Transacao nova;
+    
+    nova.setValor(valor);
+    nova.setData(data);
+    saldo = saldo + valor;
+
+    transacoes.push_back(nova);
 
 }
-void Conta :: retirada(){
+void Conta :: retirada(double valor, string data){
+    if (saldo < valor){
+
+    }else{
+        Transacao nova;
+        
+        nova.setValor(valor);
+        nova.setData(data);
+        saldo = saldo - valor;
+
+        transacoes.push_back(nova);
+    }
 
 }
 Conta::~Conta()
@@ -120,31 +138,30 @@ Conta::~Conta()
         numero_conta = _numero;
     }
 
-        string Transacao :: getData()
-        {
-            return data;
-        }
-        void Transacao :: setData(string _data)
-        {
-            data = _data;
-        }
-        int Transacao :: getValor()
-        {
-            return valor;
-
-        }
-        void Transacao :: setValor(double _valor)
-        {
-            valor = _valor;
-        }
-        int Transacao :: getDescricao()
-        {
-            return descricao;
-        }
-        void Transacao :: setDescricao(string _descricao)
-        {
-
-        }
+    string Transacao :: getData()
+    {
+        return data;
+    }
+    void Transacao :: setData(string _data)
+    {
+        data = _data;
+    }
+    int Transacao :: getValor()
+    {
+        return valor;
+    }
+    void Transacao :: setValor(double _valor)
+    {
+        valor = _valor;
+    }
+    string Transacao :: getDescricao()
+    {
+        return descricao;
+    }
+    void Transacao :: setDescricao(string _descricao)
+    {
+        descricao = _descricao;
+    }
 int main(){
 
     return 0;
